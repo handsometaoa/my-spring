@@ -3,4 +3,7 @@
 **黄色**：发生变化    
 **红色**：新增文件    
 
-![img.png](src/main/resources/img/img-2.png)
+![img.png](src/main/resources/img/img_2.png)
+
+## 类图:
+![img.png](src/main/resources/img/img_3.png)
