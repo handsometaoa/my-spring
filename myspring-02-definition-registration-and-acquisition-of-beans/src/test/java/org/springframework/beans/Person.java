@@ -1,9 +1,8 @@
-package beans;
+package org.springframework.beans;
 
 public class Person {
     private String name;
     private Integer age;
-
 
     public Person() {
     }

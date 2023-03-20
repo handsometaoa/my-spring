@@ -1,9 +1,7 @@
-package factory;
+package org.springframework.beans.factory;
 
-import beans.Person;
-import org.junit.jupiter.api.Assertions;
+import org.springframework.beans.Person;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 

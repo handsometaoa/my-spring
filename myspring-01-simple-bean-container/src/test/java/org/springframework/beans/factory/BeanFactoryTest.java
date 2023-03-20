@@ -1,8 +1,9 @@
 package org.springframework.beans.factory;
 
-import beans.Person;
+import org.springframework.beans.Person;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 
 class BeanFactoryTest {
