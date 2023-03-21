@@ -11,7 +11,7 @@ import org.springframework.beans.factory.BeanFactory;
 public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
     @Override
     public Object getBean(String name) throws BeansException {
-        return doGetBean(name, null);
+        return doGetBean(name, new Object[]{});
     }
 
     @Override

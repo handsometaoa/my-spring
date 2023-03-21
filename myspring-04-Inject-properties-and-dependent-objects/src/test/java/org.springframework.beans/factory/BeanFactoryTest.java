@@ -1,57 +1,43 @@
 package org.springframework.beans.factory;
 
-import cn.hutool.json.JSONUtil;
-import net.sf.cglib.proxy.Enhancer;
-import net.sf.cglib.proxy.NoOp;
+
+import org.junit.jupiter.api.Assertions;
+import org.springframework.beans.Cat;
 import org.springframework.beans.Person;
+import org.springframework.beans.PropertyValue;
+import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.BeanReference;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 class BeanFactoryTest {
 
     @Test
     void getBean() {
 
-        BeanDefinition beanDefinition = new BeanDefinition(Person.class);
-        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-        beanFactory.registryBeanDefinition("person", beanDefinition);
+        DefaultListableBeanFactory beanFactory=new DefaultListableBeanFactory();
+        BeanDefinition beanDefinition1 = new BeanDefinition(Cat.class);
+        beanFactory.registryBeanDefinition("cat",beanDefinition1);
+        Cat cat = (Cat) beanFactory.getBean("cat");
 
-        // 第一次创建，放进单例池缓存
-        Person person = (Person) beanFactory.getBean("person", new Object[]{"wang", 23});
-        System.out.println(JSONUtil.toJsonStr(person));
-        // 第二次直接从单例池缓存读取
-        Person person1 = (Person) beanFactory.getBean("person");
-        System.out.println(JSONUtil.toJsonStr(person));
-        System.out.println(person == person1);
 
-    }
+        PropertyValue propertyValue1 = new PropertyValue("name","zhangsan");
+        PropertyValue propertyValue2 =new PropertyValue("age",26);
+        PropertyValue propertyValue3 =new PropertyValue("cat",new BeanReference("cat"));
+        PropertyValues propertyValues=new PropertyValues();
+        propertyValues.addPropertyValue(propertyValue1);
+        propertyValues.addPropertyValue(propertyValue2);
+        propertyValues.addPropertyValue(propertyValue3);
+        BeanDefinition beanDefinition2 = new BeanDefinition(Person.class,propertyValues);
+        Person person = (Person) beanFactory.createBean("person", beanDefinition2,new Object[]{});
 
-    @Test
-    void testCglib() {
-        Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(Person.class);
-        enhancer.setCallback(new NoOp() {
-            @Override
-            public int hashCode() {
-                return super.hashCode();
-            }
-        });
 
-        Person person = (Person) enhancer.create(new Class[]{String.class, Integer.class}, new Object[]{"wang", 23});
-        System.out.println(JSONUtil.toJsonStr(person));
+        Assertions.assertEquals(cat.getName(),person.getCat().getName());
 
-    }
 
-    @Test
-    void test_constructor() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        Class<Person> personClass = Person.class;
-        Constructor<Person> constructor = personClass.getDeclaredConstructor(new Class[]{String.class, Integer.class});
-        Person person = constructor.newInstance("wang", 23);
-        System.out.println(JSONUtil.toJsonStr(person));
+
     }
 
 }

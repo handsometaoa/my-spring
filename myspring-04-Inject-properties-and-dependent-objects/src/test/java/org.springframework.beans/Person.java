@@ -1,8 +1,14 @@
 package org.springframework.beans;
 
+
+import lombok.Data;
+
+@Data
 public class Person {
     private String name;
     private Integer age;
+
+    private Cat cat;
 
     public Person() {
     }
@@ -12,23 +18,7 @@ public class Person {
         this.age = age;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public void show(){
+    public void show() {
         System.out.println("我爱中国！");
     }
 }
