@@ -3,4 +3,5 @@
 
 
 - [x] 2023-3-19 01-simple-bean-container
-
+- [x] 2023-3-19 02-definition-registration-and-acquisition-of-beans
+- [x] 2023-3-20 03-object-instantiation-strategy 
