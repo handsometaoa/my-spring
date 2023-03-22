@@ -12,4 +12,12 @@ public interface BeanFactory {
      */
     Object getBean(String name, Object... args) throws BeansException;
 
+
+    /**
+     * 根据类型获取 bean
+     */
+    <T> T getBean(String name,Class<T> requiredType);
+
+
+
 }

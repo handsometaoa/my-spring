@@ -25,7 +25,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         }
 
         // 添加到单例池中
-        addSingleton(beanName, bean);
+        registerSingleton(beanName, bean);
         return bean;
     }
 
