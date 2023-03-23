@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean id="cat" class="org.springframework.beans.Cat">
+        <property name="name" value="miaomiao"/>
+    </bean>
+
+    <bean id="person" class="org.springframework.beans.Person">
+        <property name="name" value="xiaowang"/>
+        <property name="age" value="28"/>
+        <property name="cat" ref="cat"/>
+    </bean>
+
+    <bean class="org.springframework.beans.common.MyBeanPostProcessor"/>
+    <bean class="org.springframework.beans.common.MyBeanFactoryPostProcessor"/>
+
+</beans>
