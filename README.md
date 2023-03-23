@@ -7,7 +7,7 @@
 - [x] 2023-3-20 03-object-instantiation-strategy 
 - [x] 2023-3-21 04-Inject-properties-and-dependent-objects
 - [x] 2023-3-22 05-resource-loader-resolves-file-registration-objects
-- [ ] 2023-3-23
+- [ ] 2023-3-23 06-application-context
 - [ ] 2023-3-24
 - [ ] 2023-3-25
 - [ ] 2023-3-26
